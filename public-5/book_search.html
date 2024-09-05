@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books O' Plenty</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        h3{
+            text-align: center;
+            margin: 5px;
+            padding: 10px;
+        }
+        body{
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+        }
+        
+    </style>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+
+</head>
+<body class="main" style="background-color: antiquewhite">
+    <h1><u>Books O' Plenty</u></h1>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="user_info.html">User Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="book_search.html">Book Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="checkout.html">Checkout</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-9" style="border: 5px solid;">
+              <h3><u>Search By Title/Author</u></h3>
+              <input id="myInput" type="text" placeholder="Search.." style="background-color:  antiquewhite; margin: 10px; border: 2px solid;">
+              <ul class="row" id="books" style="list-style-type: none;">
+
+              </ul>
+
+            </div>
+            <div class="col-3" style="border: 5px solid;">
+              <h3><u>Cart</u></h3>
+              <ul class="row" id="favorite_list">
+
+              </ul>
+            </div>
+    </div>
+    <script>
+
+
+      function update_book(data){
+          for (i = 0; i < data.length; i++) {
+              const book_info = data[i];
+              const list_item = $("<li></li>")
+              const author = book_info.author
+              const title = book_info.title
+
+              const favorite_button = $('<button style="background-color: antiquewhite"></button>').text('Add')
+              const delete_fav = $('<button style="background-color: antiquewhite"></button>').text('Remove')
+
+              const img = $("<img/>")
+              img.attr("src", "./images/"+book_info.image)
+              img.attr("width", 100) 
+
+              favorite_button.click( function () {
+                        var book = book_info.title
+                        $.post('/favorite_update', {book: book})
+                        update_favorites()
+                    })
+
+              delete_fav.click( function () {
+                        var book = book_info.title
+                        $.post('/delete_favorite', {book: book})
+                        update_favorites()
+                    })
+
+              list_item.append(img).append("<br>" + title).append(" by " + author + "<br>").append(favorite_button).append(delete_fav)
+              list_item.attr("class", "col",)
+              $('#books').append(list_item)
+    }
+          }
+
+          function update_favorites(){
+            $('#favorite_list').empty()
+            $.get("/get_user_favorites", (data) => {
+            for (let i = 0; i < data.favorites.length; i++){
+                    const title = $('<span></span>').text(data.favorites[i])
+                    const newLi = $('<li></li>').append(title)
+                    $('#favorite_list').append(newLi)
+                }
+          });
+          }
+      $(document).ready(function() {
+          update_favorites()
+          $.get('./data/books.json', update_book)
+
+          $("#myInput").on("keyup", function () {
+              var value = $(this).val().toLowerCase();
+              $("#books li").filter(function () {
+
+                  const this_specific_list_item = $(this)
+
+                  const inner_text_of_list_item = this_specific_list_item.text().toLowerCase()
+
+                  const does_index_exist = inner_text_of_list_item.indexOf(value) > -1
+
+                  this_specific_list_item.toggle(does_index_exist)
+              });
+          });
+      })
+  </script>
+
+</body>
+</html>

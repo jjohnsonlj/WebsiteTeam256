@@ -1,0 +1,102 @@
+[
+    {
+        "title": "The Future",
+        "author": "Naomi Alderman",
+        "image": "the_future.jpg"
+    },
+    {
+        "title": "The Deep Sky",
+        "author": "Yume Kitasei",
+        "image": "deep_sky.jpg"
+    },
+    {
+        "title": "The Housemaid's Secret",
+        "author": "Freida McFadden",
+        "image": "housemaid.jpg"
+    },
+    {
+        "title": "The Only One Left",
+        "author": "Riley Sager",
+        "image": "only_one.jpg"
+    },
+    {
+        "title": "Hello Beautiful",
+        "author": "Ann Napolitano",
+        "image": "best_sellers/hello_beautiful.jpg"
+    },
+    {
+        "title": "Shark Heart, A Love Story",
+        "author": "Emily Habeck",
+        "image": "best_sellers/shark_heart.jpg"
+    },
+    {
+        "title": "The Wishing Game",
+        "author": "Meg Shaffer",
+        "image": "best_sellers/wishing_game.jpg"
+    },
+    {
+        "title": "The Coworker",
+        "author": "Freida McFadden",
+        "image": "popular_reads/coworker.jpg"
+    },
+    {
+        "title": "The Light Pirate",
+        "author": "Lily Brooks-Dalton",
+        "image": "popular_reads/light_pirate.jpg"
+    },
+    {
+        "title": "Yours Truly",
+        "author": "Abby Jimenez",
+        "image": "popular_reads/yours_truly.jpg"
+    },
+    {
+        "title": "Yellowface",
+        "author": "R.F. Kuang",
+        "image": "yellowface.jpg"
+    },
+    {
+        "title": "Happy Place",
+        "author": "Emily Henry",
+        "image": "happy_place.jpg"
+    },
+    {
+        "title": "Weyward",
+        "author": "Emilia Hart",
+        "image": "weyward.jpg"
+    },
+    {
+        "title": "Holly",
+        "author": "Stephen King",
+        "image": "holly.jpg"
+    },
+    {
+        "title": "In the Lives of Puppets",
+        "author": "T.J. Klune",
+        "image": "puppets.jpg"
+    },
+    {
+        "title": "Check & Mate",
+        "author": "Ali Hazelwood",
+        "image": "check_mate.jpg"
+    },
+    {
+        "title": "Poverty, by America",
+        "author": "Matthew Desmond",
+        "image": "poverty.jpg"
+    },
+    {
+        "title": "The Wager",
+        "author": "David Grann",
+        "image": "wager.jpg"
+    },
+    {
+        "title": "Divine Rivals",
+        "author": "Rebecca Ross",
+        "image": "divine.jpg"
+    },
+    {
+        "title": "Hell Bent",
+        "author": "Leigh Bardugo",
+        "image": "hell_bent.jpg"
+    }
+]
